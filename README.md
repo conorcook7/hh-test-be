@@ -13,63 +13,75 @@ Type: POST
 Body: GraphQL
 
 Definition / Schema:
+
+```
 schema {
-query: Query
-mutation: Mutation
+  query: Query
+  mutation: Mutation
 }
 type Color {
-id: ID!
-name: String!
-colorValue: String!
-}
+    id: ID!
+    name: String!
+    colorValue: String!
+  }
 
-type Query {
-colors: [Color]
-}
+  type Query {
+    colors: [Color]
+  }
 
-input CreateColor {
-name: String!
-colorValue: String!
-}
+  input CreateColor {
+    name: String!
+    colorValue: String!
+  }
 
-input UpdateColor {
-name: String!
-colorValue: String!
-}
+  input UpdateColor {
+    name: String!
+    colorValue: String!
+  }
 
-type DeleteColor {
-id: ID!
-}
+  type DeleteColor {
+    id: ID!
+  }
 
-type Mutation {
-createColor(input: CreateColor!): Color!
-updateColor(id: ID, input: UpdateColor!): Color!
-deleteColor(id: ID): DeleteColor!
-}
+  type Mutation {
+    createColor(input: CreateColor!): Color!
+    updateColor(id: ID, input: UpdateColor!): Color!
+    deleteColor(id: ID): DeleteColor!
+  }
+```
 
 Sample Calls:
 Query
+
+```
 query colors {
-colors {
-id
-name
-colorValue
+    colors {
+        id
+        name
+        colorValue
+    }
 }
-}
+```
 
 Mutation
+
+```
 mutation createColor ($input: CreateColor!) {
-createColor (input: $input) {
-id
-name
-colorValue
+    createColor (input: $input) {
+        id
+        name
+        colorValue
+    }
 }
-}
+```
 
 GraphQL Variables:
+
+```
 {
-"input": {
-"name": "LightGray",
-"colorValue": "D3D3D3"
+  "input": {
+    "name": "LightGray",
+    "colorValue": "D3D3D3"
+  }
 }
-}
+```
